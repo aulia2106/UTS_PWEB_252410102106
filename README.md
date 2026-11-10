@@ -60,8 +60,8 @@ Buka `http://127.0.0.1:8000`, isi username & password bebas (min. 3 dan 4 karakt
 
 | Login | Dashboard |
 | --- | --- |
-| ![Login](screenshots/login.png) | ![Dashboard](screenshots/dashboard.png) |
+| ![Login](Login.png) | ![Dashboard](Dashboard.png) |
 
 | Pengelolaan | Profile |
 | --- | --- |
-| ![Pengelolaan](screenshots/pengelolaan.png) | ![Profile](screenshots/profile.png) |
+| ![Pengelolaan](Pengelolaan.png) | ![Profile](Profile.png) |
