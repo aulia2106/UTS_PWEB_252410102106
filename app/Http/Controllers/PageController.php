@@ -9,9 +9,7 @@ class PageController extends Controller
 {
     private const KATEGORI = ['Kopi' => 'KP', 'Non-Kopi' => 'NK', 'Makanan' => 'MK'];
 
-    /**
-     * Data awal menu. Setelah itu data disimpan di session sehingga bisa di-CRUD.
-     */
+
     private function dataAwal(): array
     {
         return [
@@ -27,7 +25,6 @@ class PageController extends Controller
         ];
     }
 
-    /** Ambil menu dari session; isi dengan data awal jika belum ada. */
     private function ambilMenu(): array
     {
         if (! session()->has('menu')) {
@@ -36,7 +33,6 @@ class PageController extends Controller
         return session('menu');
     }
 
-    /** Tambahkan label status berdasarkan jumlah stok. */
     private function denganStatus(array $menu): array
     {
         return array_map(function ($item) {
@@ -54,7 +50,6 @@ class PageController extends Controller
         }, $menu);
     }
 
-    /** Buat kode otomatis, mis. KP-004, berdasarkan kategori. */
     private function buatKode(array $menu, string $kategori): string
     {
         $prefix = self::KATEGORI[$kategori];
@@ -93,13 +88,11 @@ class PageController extends Controller
         ];
     }
 
-    /** Menampilkan form login. */
     public function login()
     {
         return view('login');
     }
 
-    /** Simulasi login: validasi input, lalu kirim username lewat request parameter. */
     public function authenticate(Request $request)
     {
         $data = $request->validate([
@@ -115,7 +108,6 @@ class PageController extends Controller
         return redirect()->route('dashboard', ['username' => $data['username']]);
     }
 
-    /** Dashboard: menerima ?username= dan menampilkan ringkasan dari data menu terkini. */
     public function dashboard(Request $request)
     {
         $username = $request->query('username');
@@ -142,7 +134,6 @@ class PageController extends Controller
         return view('dashboard', compact('username', 'stats', 'aktivitas'));
     }
 
-    /** Pengelolaan menu: daftar (@foreach), pencarian, dan mode edit lewat ?edit=KODE. */
     public function pengelolaan(Request $request)
     {
         $username = $request->query('username');
@@ -175,7 +166,6 @@ class PageController extends Controller
         return view('pengelolaan', compact('username', 'menu', 'keyword', 'editItem', 'kategoriList'));
     }
 
-    /** CREATE: tambah menu baru. */
     public function store(Request $request)
     {
         $username = $request->input('username');
@@ -195,7 +185,6 @@ class PageController extends Controller
             ->with('sukses', "Menu \"{$data['nama']}\" berhasil ditambahkan.");
     }
 
-    /** UPDATE: ubah menu berdasarkan kode. */
     public function update(Request $request, string $kode)
     {
         $username = $request->input('username');
@@ -220,7 +209,6 @@ class PageController extends Controller
             ->with('sukses', "Menu \"{$data['nama']}\" berhasil diperbarui.");
     }
 
-    /** DELETE: hapus menu berdasarkan kode. */
     public function destroy(Request $request, string $kode)
     {
         $username = $request->input('username');
@@ -234,7 +222,6 @@ class PageController extends Controller
             ->with('sukses', "Menu \"{$nama}\" berhasil dihapus.");
     }
 
-    /** Profil pengguna: username dari request, data lain dari controller. */
     public function profile(Request $request)
     {
         $username = $request->query('username');
