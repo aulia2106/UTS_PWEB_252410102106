@@ -1,5 +1,6 @@
 <footer class="footer">
-    <p><strong>CIGARRAY</strong> · Sistem Pengelolaan Toko Rokok</p>
-    <p>Produk tembakau — khusus usia 18 tahun ke atas.</p>
-    <p>UTS Pemrograman Web · Laravel + Blade · NIM 252410102106</p>
+    <div class="footer__inner">
+        <p><strong>Coffeemist</strong> · Sistem Pengelolaan Kedai Kopi</p>
+        <p class="muted">UTS Pemrograman Web · Laravel + Blade · NIM 252410102106</p>
+    </div>
 </footer>

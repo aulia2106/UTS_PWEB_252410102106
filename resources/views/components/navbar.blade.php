@@ -1,40 +1,23 @@
 @props(['username' => null])
 
-{{-- Navbar berbentuk sidebar vertikal (di layar kecil berubah menjadi bar atas dengan menu buka-tutup) --}}
-<aside class="sidebar">
-    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Buka menu">
-
-    <div class="sidebar__top">
-        <a class="logo" href="{{ route('dashboard', ['username' => $username]) }}">CIGARRAY</a>
-        <label for="nav-toggle" class="nav-burger" aria-hidden="true"><span></span><span></span><span></span></label>
-    </div>
-
-    <div class="sidebar__panel">
-        <p class="eyebrow">Tobacco Inventory</p>
-
-        <nav class="menu">
-            <a href="{{ route('dashboard', ['username' => $username]) }}"
-               class="menu__item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
-                <span class="menu__no">01</span> Dashboard
-            </a>
-            <a href="{{ route('pengelolaan', ['username' => $username]) }}"
-               class="menu__item {{ request()->routeIs('pengelolaan') ? 'active' : '' }}">
-                <span class="menu__no">02</span> Pengelolaan
-            </a>
-            <a href="{{ route('profile', ['username' => $username]) }}"
-               class="menu__item {{ request()->routeIs('profile') ? 'active' : '' }}">
-                <span class="menu__no">03</span> Profile
-            </a>
-        </nav>
-
-        <div class="sidebar__user">
-            <div class="avatar-sm">{{ strtoupper(substr($username ?? '?', 0, 1)) }}</div>
-            <div>
-                <small>Masuk sebagai</small>
-                <span class="hello">Halo, {{ $username }}</span>
-            </div>
+<header class="navbar">
+    <div class="navbar__inner">
+        <div class="brand-wrap">
+            <a class="brand" href="{{ route('dashboard', ['username' => $username]) }}">Coffeemist</a>
+            <span class="nav-user">Halo, <strong>{{ $username }}</strong></span>
         </div>
 
-        <a href="{{ route('login') }}" class="btn btn--light btn--block">Keluar</a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Buka menu">
+        <label for="nav-toggle" class="nav-burger" aria-hidden="true"><span></span><span></span><span></span></label>
+
+        <nav class="nav-links">
+            <a href="{{ route('dashboard', ['username' => $username]) }}"
+               class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">Dashboard</a>
+            <a href="{{ route('pengelolaan', ['username' => $username]) }}"
+               class="{{ request()->routeIs('pengelolaan') ? 'active' : '' }}">Pengelolaan</a>
+            <a href="{{ route('profile', ['username' => $username]) }}"
+               class="{{ request()->routeIs('profile') ? 'active' : '' }}">Profile</a>
+            <a href="{{ route('login') }}" class="btn btn--ghost btn--sm">Keluar</a>
+        </nav>
     </div>
-</aside>
+</header>

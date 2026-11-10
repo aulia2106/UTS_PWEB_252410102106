@@ -50,7 +50,7 @@ public/css/style.css
 ```bash
 composer create-project laravel/laravel UTS_PWEB_252410102106
 cd UTS_PWEB_252410102106
-
+# salin file repo ini (routes, app, resources, public) ke dalam proyek, timpa jika diminta
 php artisan serve
 ```
 
@@ -58,10 +58,12 @@ Buka `http://127.0.0.1:8000`, isi username & password bebas (min. 3 dan 4 karakt
 
 ## Screenshot
 
+> Tambahkan screenshot setelah aplikasi dijalankan (simpan di folder `screenshots/`).
+
 | Login | Dashboard |
 | --- | --- |
-| ![Login](Login.png) | ![Dashboard](Dashboard.png) |
+| ![Login](screenshots/login.png) | ![Dashboard](screenshots/dashboard.png) |
 
 | Pengelolaan | Profile |
 | --- | --- |
-| ![Pengelolaan](Pengelolaan.png) | ![Profile](Profile.png) |
+| ![Pengelolaan](screenshots/pengelolaan.png) | ![Profile](screenshots/profile.png) |
