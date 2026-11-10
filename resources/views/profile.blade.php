@@ -3,18 +3,13 @@
 @section('title', 'Profile')
 
 @section('content')
-<section class="page-head">
-    <div>
-        <h1>Profile</h1>
-        <p class="muted">Informasi akun yang sedang masuk.</p>
-    </div>
-</section>
+<x-page-header eyebrow="Profile" title="Akun Admin" subtitle="Informasi akun yang sedang masuk." />
 
 <section class="profile">
-    <div class="card profile__side">
+    <div class="profile__side">
         <div class="avatar">{{ strtoupper(substr($username, 0, 1)) }}</div>
         <h2>{{ $username }}</h2>
-        <p class="muted">{{ $profil['Peran'] }}</p>
+        <p class="eyebrow">{{ $profil['Peran'] }}</p>
         <div class="chips">
             @foreach ($keahlian as $k)
                 <span class="chip">{{ $k }}</span>
@@ -22,8 +17,8 @@
         </div>
     </div>
 
-    <div class="card profile__main">
-        <h2>Detail Akun</h2>
+    <div class="panel">
+        <div class="panel__head"><h2>Detail Akun</h2></div>
         <dl class="details">
             @foreach ($profil as $label => $isi)
                 <div>
