@@ -2,21 +2,25 @@
 <html lang="id">
 <head>
     @include('partials.head')
-    <title>@yield('title', 'Beranda') · Coffeemist</title>
+    <title>@yield('title', 'Beranda') · CIGARRAY</title>
 </head>
 <body class="@yield('body_class')">
 
     @hasSection('guest')
-        {{-- Halaman tamu (login) tidak menampilkan navbar --}}
-    @else
-        <x-navbar :username="$username ?? null" />
-    @endif
-
-    <main class="container">
+        {{-- Halaman tamu (login): layar penuh tanpa sidebar --}}
         @yield('content')
-    </main>
+    @else
+        <div class="shell">
+            <x-navbar :username="$username ?? null" />
 
-    <x-footer />
+            <div class="main">
+                <main class="content">
+                    @yield('content')
+                </main>
+                <x-footer />
+            </div>
+        </div>
+    @endif
 
 </body>
 </html>
